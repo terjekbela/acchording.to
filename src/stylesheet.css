@@ -1,0 +1,75 @@
+@font-face {
+    font-family: 'Leland';
+    src: url('Leland.woff2') format('woff2'),
+        url('Leland.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+body {
+    margin:0;
+    padding:0;
+}
+score {
+    display:block;
+    width:400px;
+    margin:200px auto 0 auto;
+}
+staff {
+    font-family: Leland;
+    display: block;
+    margin-top:10rem;
+}
+line, space {
+    display:flex;
+    align-content:center;
+    position:relative;
+    width:100%;
+    height:2rem;
+    margin:0;
+    padding:0;
+}
+line::before {
+    content:'';
+    display:block;
+    width:100%;
+    height:0.4rem;
+    margin-top:0.9rem;
+    background-color:black;
+}
+note {
+    display:block;
+    z-index:1;
+    font-size:13rem;
+    line-height:13rem;
+    position:absolute;
+    margin-top: -5.2rem;
+    margin-left: 10rem;
+}
+note.down {
+    margin-top: -5.4rem;
+}
+note::before,
+note.up::before,
+note.crotchet::before,
+note.crotchet.up::before {
+    content: "\00E1D5";
+}
+note.down::before,
+note.crotchet.down::before {
+    content: "\00E1D6";
+}
+note.quaver::before,
+note.quaver.up::before {
+    content: "\00E1D7";
+}
+note.quaver.down::before {
+    content: "\00E1D8";
+}
+note.minim::before,
+note.minim.up::before {
+    content: "\00E1D3";
+}
+note.minim.down::before {
+    content: "\00E1D4";
+}
