@@ -1,0 +1,24 @@
+note::before,
+note.up::before,
+note.crotchet::before,
+note.crotchet.up::before {
+    content: "\00E1D5";
+}
+note.down::before,
+note.crotchet.down::before {
+    content: "\00E1D6";
+}
+note.quaver::before,
+note.quaver.up::before {
+    content: "\00E1D7";
+}
+note.quaver.down::before {
+    content: "\00E1D8";
+}
+note.minim::before,
+note.minim.up::before {
+    content: "\00E1D3";
+}
+note.minim.down::before {
+    content: "\00E1D4";
+}
