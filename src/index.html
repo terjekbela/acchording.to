@@ -1,21 +1,40 @@
 <html>
     <head>
         <title>acchording.to</title>
-        <link rel="stylesheet" href="stylesheet.css" />
+        <link rel="stylesheet" href="score.css" />
+        <link rel="stylesheet" href="notes.css" />
     </head>
     <body>
-        <score>
+        <system>
             <staff>
+                <clef class="treble"></clef>
                 <line></line>
                 <space><note class="crotchet up" /></space>
                 <line></line>
+                <space><note class="minim down" /></space>
+                <line></line>
                 <space></space>
-                <line><note class="minim up" /></line>
+                <line><note class="crotchet up" /></line> 
                 <space></space>
-                <line><note class="quaver down" /></line> 
+                <line></line> 
+            </staff>
+            <between></between>
+            <between></between>
+            <between></between>
+            <between></between>
+            <between></between>
+            <staff>
+                <clef class="bass"></clef>
+                <line></line>
+                <space></space>
+                <line><note class="crotchet down" /></line>
+                <space></space>
+                <line></line>
+                <space></space>
+                <line></line> 
                 <space></space>
                 <line></line>
             </staff>
-        </score>
+        </system>
     </body>
 </html>

@@ -10,17 +10,35 @@ body {
     margin:0;
     padding:0;
 }
-score {
+system {
     display:block;
-    width:400px;
+    width:40rem;
     margin:200px auto 0 auto;
 }
 staff {
     font-family: Leland;
     display: block;
-    margin-top:10rem;
+    position:relative;
 }
-line, space {
+clef.treble:before {
+    display: block;
+    position:absolute;
+    content: "\00e050";
+    top:4rem;
+    z-index:1;
+    font-size:15rem;
+    line-height:15rem;
+}
+clef.bass:before {
+    display: block;
+    position:absolute;
+    content: "\00e062";
+    top:-2.4rem;
+    z-index:1;
+    font-size:15rem;
+    line-height:15rem;
+}
+line, space, between {
     display:flex;
     align-content:center;
     position:relative;
@@ -37,15 +55,22 @@ line::before {
     margin-top:0.9rem;
     background-color:black;
 }
+between:nth-child(even) {
+    background-color:#f0f0f0;
+}
+between:nth-child(odd) {
+    background-color:#f8f8f8;
+}
 note {
     display:block;
+    position:absolute;
+    top: -5.2rem;
+    left: 21rem;
     z-index:1;
     font-size:13rem;
     line-height:13rem;
-    position:absolute;
-    margin-top: -5.2rem;
-    margin-left: 10rem;
 }
 note.down {
-    margin-top: -5.5rem;
+    top: -5.5rem;
+    left:19rem;
 }
