@@ -6,9 +6,24 @@
     font-style: normal;
     font-display: swap;
 }
+html {
+    font-size: 10px;
+}
 body {
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+body::after {
+    position: absolute;
+    content: " ";
+    xbackground: url(template.png) no-repeat;
+    opacity: 0.1;
+    top: -9.5rem;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;  
 }
 system {
     display:block;
@@ -24,26 +39,28 @@ clef.treble:before {
     display: block;
     position:absolute;
     content: "\00e050";
-    top:4rem;
+    top:4.45rem;
+    left:3.3rem;
     z-index:1;
-    font-size:15rem;
-    line-height:15rem;
+    font-size:14rem;
+    line-height:14rem;
 }
 clef.bass:before {
     display: block;
     position:absolute;
     content: "\00e062";
-    top:-2.4rem;
+    top:7.9rem;
+    left:3.3rem;
     z-index:1;
-    font-size:15rem;
-    line-height:15rem;
+    font-size:14rem;
+    line-height:14rem;
 }
-line, space, between {
+line, space, separator {
     display:flex;
     align-content:center;
     position:relative;
     width:100%;
-    height:2rem;
+    height:1.723rem;
     margin:0;
     padding:0;
 }
@@ -51,26 +68,26 @@ line::before {
     content:'';
     display:block;
     width:100%;
-    height:0.4rem;
+    height:0.35rem;
     margin-top:0.9rem;
     background-color:black;
 }
-between:nth-child(even) {
+xseparator:nth-child(even) {
     background-color:#f0f0f0;
 }
-between:nth-child(odd) {
+xseparator:nth-child(odd) {
     background-color:#f8f8f8;
 }
 note {
     display:block;
     position:absolute;
-    top: -5.2rem;
-    left: 21rem;
+    top: -4.3rem;
+    left: 26rem;
     z-index:1;
-    font-size:13rem;
-    line-height:13rem;
+    font-size:11rem;
+    line-height:11rem;
 }
 note.down {
-    top: -5.5rem;
-    left:19rem;
+    top: -4.5rem;
+    left:24rem;
 }
