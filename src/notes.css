@@ -1,24 +1,33 @@
 note::before,
-note.up::before,
 note.crotchet::before,
-note.crotchet.up::before {
+note.quaver::before {
+    content: "\00E0A4";
+}
+note.minim::before {
+    content: "\00E0A3";
+}
+
+note.stem::before,
+note.stem.up::before,
+note.stem.crotchet::before,
+note.stem.crotchet.up::before {
     content: "\00E1D5";
 }
-note.down::before,
-note.crotchet.down::before {
+note.stem.down::before,
+note.stem.crotchet.down::before {
     content: "\00E1D6";
 }
-note.quaver::before,
-note.quaver.up::before {
+note.stem.quaver::before,
+note.stem.quaver.up::before {
     content: "\00E1D7";
 }
-note.quaver.down::before {
+note.stem.quaver.down::before {
     content: "\00E1D8";
 }
-note.minim::before,
-note.minim.up::before {
+note.stem.minim::before,
+note.stem.minim.up::before {
     content: "\00E1D3";
 }
-note.minim.down::before {
+note.stem.minim.down::before {
     content: "\00E1D4";
 }
