@@ -17,7 +17,7 @@ body {
 body::after {
     position: absolute;
     content: " ";
-    xbackground: url(template.png) no-repeat;
+    background: url(template.png) no-repeat;
     opacity: 0.1;
     top: -9.5rem;
     left: 0;
