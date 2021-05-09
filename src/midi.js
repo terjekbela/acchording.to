@@ -29,9 +29,12 @@ function midiMessage(message) {
 }
 
 function midiNoteOn(note) {
-    console.log('on:' + note);
+    parentEl = document.querySelector('#midi'+note);
+    noteEl   = document.createElement("note");
+    parentEl.appendChild(noteEl);
 }
 
 function midiNoteOff(note) {
-    console.log('off:' + note);
+    parentEl = document.querySelector('#midi'+note);
+    while(parentEl.firstChild) parentEl.removeChild(parentEl.firstChild);
 }
