@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'Leland';
     src: url('Leland.woff2') format('woff2'),
-        url('Leland.woff') format('woff');
+         url('Leland.woff')  format('woff');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -17,7 +17,7 @@ body {
 system {
     display:block;
     width:40rem;
-    margin:100px auto 0 auto;
+    margin:50 auto 0 auto;
     font-family: Leland;
 }
 staff {

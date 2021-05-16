@@ -26,7 +26,7 @@ function midiMessage(message) {
 }
 
 function midiDisplay() {
-    let lines = document.querySelectorAll('.top line,.top space');
+    let lines = document.querySelectorAll('.top line,.top space,.bottom line,.bottom space');
     if (lines.length) {
         lines.forEach(linesEl => {
             let midiNote = parseInt(linesEl.id.replace('midi',''));
