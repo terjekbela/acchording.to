@@ -7,7 +7,7 @@
     font-display: swap;
 }
 html {
-    font-size: 15px;
+    font-size: 10px;
 }
 body {
     margin: 0;
@@ -17,7 +17,7 @@ body {
 system {
     display:block;
     width:40rem;
-    margin:200px auto 0 auto;
+    margin:100px auto 0 auto;
     font-family: Leland;
 }
 staff {
@@ -28,7 +28,7 @@ clef.treble:before {
     display: block;
     position:absolute;
     content: "\00e050";
-    top:4.45rem;
+    top:11.342rem;
     left:3.3rem;
     z-index:1;
     font-size:14rem;
@@ -44,7 +44,7 @@ clef.bass:before {
     font-size:14rem;
     line-height:14rem;
 }
-line, space, separator {
+line, space {
     display:flex;
     align-content:center;
     position:relative;
@@ -61,4 +61,10 @@ line::before {
     margin-top:0.9rem;
     background-color:black;
 }
-
+line.ledger::before {
+    margin-left:25rem;
+    width:6rem;
+}
+line.ledger:empty::before {
+    background-color:white;
+}

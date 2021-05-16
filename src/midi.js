@@ -1,14 +1,13 @@
-navigator.requestMIDIAccess().then(midiSuccess, midiFailure);
+let notes = new Set;
 
-function midiSuccess(midiAccess) {
-    for (var input of midiAccess.inputs.values()) {
-        input.onmidimessage = midiMessage;
-    }
-}
-
-function midiFailure() {
-    console.log('Could not access your MIDI devices.');
-}
+navigator.requestMIDIAccess().then(
+    (midi) => {
+        for (let input of midi.inputs.values()) {
+            input.onmidimessage = midiMessage;
+        }
+    },
+    () => console.log('No MIDI devices.')
+);
 
 function midiMessage(message) {
     var command = message.data[0];
@@ -16,25 +15,31 @@ function midiMessage(message) {
     var velocity = (message.data.length > 2) ? message.data[2] : 0;
     switch (command) {
         case 144:
-            if (velocity > 0) {
-                midiNoteOn(note, velocity);
-            } else {
-                midiNoteOff(note);
-            }
+            if (velocity > 0) notes.add(note);
+            else notes.delete(note);
             break;
         case 128:
-            midiNoteOff(note);
+            notes.delete(note);
             break;
     }
+    midiDisplay();
 }
 
-function midiNoteOn(note) {
-    parentEl = document.querySelector('#midi'+note);
-    noteEl   = document.createElement("note");
-    parentEl.appendChild(noteEl);
-}
-
-function midiNoteOff(note) {
-    parentEl = document.querySelector('#midi'+note);
-    while(parentEl.firstChild) parentEl.removeChild(parentEl.firstChild);
+function midiDisplay() {
+    let lines = document.querySelectorAll('.top line,.top space');
+    if (lines.length) {
+        lines.forEach(linesEl => {
+            let midiNote = parseInt(linesEl.id.replace('midi',''));
+            if (notes.has(midiNote)) {
+                if (!linesEl.hasChildNodes()) {
+                    let noteEl = document.createElement("note");
+                    linesEl.appendChild(noteEl);
+                }
+            } else {
+                while(linesEl.hasChildNodes()) {
+                    linesEl.removeChild(linesEl.firstChild);
+                }
+            }
+        });
+    }
 }
