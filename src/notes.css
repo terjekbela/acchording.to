@@ -1,3 +1,17 @@
+note {
+    display:block;
+    position:absolute;
+    top: -4.9rem;
+    left: 26rem;
+    z-index:1;
+    font-size:12rem;
+    line-height:12rem;
+}
+note.down {
+    top: -4.5rem;
+    left:24rem;
+}
+
 note::before,
 note.crotchet::before,
 note.quaver::before {
