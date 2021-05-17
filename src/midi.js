@@ -22,24 +22,36 @@ function midiMessage(message) {
             notes.delete(note);
             break;
     }
-    midiDisplay();
+    midiPlace();
 }
 
-function midiDisplay() {
-    let lines = document.querySelectorAll('.top line,.top space,.bottom line,.bottom space');
-    if (lines.length) {
-        lines.forEach(linesEl => {
-            let midiNote = parseInt(linesEl.id.replace('midi',''));
-            if (notes.has(midiNote)) {
-                if (!linesEl.hasChildNodes()) {
-                    let noteEl = document.createElement("note");
-                    linesEl.appendChild(noteEl);
-                }
-            } else {
-                while(linesEl.hasChildNodes()) {
-                    linesEl.removeChild(linesEl.firstChild);
-                }
-            }
-        });
+function midiPlace() {
+    document.querySelectorAll('note').forEach((e) => e.remove());
+    let notesArr = [...notes].sort();
+    console.log(notesArr);
+    notesArr.forEach((n,i) => {
+        if(i > 0) {
+            midiPlaceNote(n, 'top');
+        } else {
+            midiPlaceNote(n, 'bottom');
+        }
+    });
+}
+
+function midiPlaceNote(note, staff) {
+    let noteEl = document.createElement("note");
+    if (midiMatchNote(note, 'top') && midiMatchNote(note, 'bottom')) {
+        let linesEl = document.querySelector('staff.' + staff + ' #n' + note);
+        linesEl.appendChild(noteEl);
+    } else if (midiMatchNote(note, 'top')) {
+        let linesEl = document.querySelector('staff.top' + ' #n' + note);
+        linesEl.appendChild(noteEl);
+    } else if (midiMatchNote(note, 'bottom')) {
+        let linesEl = document.querySelector('staff.bottom' + ' #n' + note);
+        linesEl.appendChild(noteEl);
     }
+}
+
+function midiMatchNote(note, staff) {
+    return document.querySelectorAll('staff.' + staff + ' #n' + note).length > 0;
 }
