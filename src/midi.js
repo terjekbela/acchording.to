@@ -4,6 +4,10 @@ navigator.requestMIDIAccess().then(
     (midi) => {
         for (let input of midi.inputs.values()) {
             input.onmidimessage = midiMessage;
+            //console.log(input);
+        };
+        for (let output of midi.outputs.values()) {
+            //console.log(output);
         }
     },
     () => console.log('No MIDI devices.')
@@ -30,7 +34,7 @@ function midiPlace() {
     let notesArr = [...notes].sort();
     console.log(notesArr);
     notesArr.forEach((n,i) => {
-        if(i > 0) {
+        if(i > 0 || notesArr.length<4) {
             midiPlaceNote(n, 'top');
         } else {
             midiPlaceNote(n, 'bottom');
