@@ -1,6 +1,6 @@
 system {
     display:block;
-    width:40rem;
+    width:50rem;
     margin:50 auto 0 auto;
     font-family: Leland;
 }
@@ -48,7 +48,8 @@ line::before {
 line.ledger::before {
     margin-left:25rem;
     width:6rem;
-}
-line.ledger:empty::before {
     background-color:white;
+}
+line.ledger.show::before {
+    background-color:black;
 }
