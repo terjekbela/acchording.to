@@ -3,7 +3,7 @@ let notes = new Set;
 navigator.requestMIDIAccess().then(
     (midi) => {
         [...midi.inputs.values()].forEach((i)=>i.onmidimessage = midiMessage);
-        [...midi.outputs.values()].forEach((o)=>console.log(o));
+//      [...midi.outputs.values()].forEach((o)=>console.log(o));
     },
     () => console.log('No MIDI devices.')
 );
@@ -32,31 +32,45 @@ function notePlace() {
     });
     notesArr.forEach((n,i) => {
         if(i > 0 || notesArr.length<4) {
-            midiPlaceNote(n, 'top');
+            notePlaceNote(n, 'top');
         } else {
-            midiPlaceNote(n, 'bottom');
+            notePlaceNote(n, 'bottom');
         }
     });
 }
 
-function midiPlaceNote(note, staff) {
+function notePlaceNote(note, staff) {
     let noteEl = document.createElement("note");
     let lineEl = null; // a line or a space really
     if (noteMatchStaff(note, 'top') && noteMatchStaff(note, 'bottom')) {
-        lineEl = document.querySelector('staff.' + staff + ' .n' + note);
+        lineEl = noteMatchLine(note, staff);
     } else if (noteMatchStaff(note, 'top')) {
-        lineEl = document.querySelector('staff.top .n' + note);
+        lineEl = noteMatchLine(note, 'top');
     } else if (noteMatchStaff(note, 'bottom')) {
-        lineEl = document.querySelector('staff.bottom .n' + note);
+        lineEl = noteMatchLine(note, 'bottom');
     }
     if (lineEl!==null) {
         lineEl.appendChild(noteEl);
-        if (lineEl.classList.contains('ledger')) {
-            lineEl.classList.add('show');
-        }
+        if (lineEl.classList.contains('ledger')) lineEl.classList.add('show');
+        if (lineEl.classList.contains('s' + note)) noteEl.classList.add('sharp');
     }
 }
 
 function noteMatchStaff(note, staff) {
-    return document.querySelectorAll('staff.' + staff + ' .n' + note).length > 0;
+    if(document.querySelectorAll('staff.' + staff + ' .n' + note).length) {
+        return true;
+    } else if(document.querySelectorAll('staff.' + staff + ' .s' + note).length) {
+        return true;
+    }
+    return false;
+}
+
+function noteMatchLine(note, staff) {
+    lineElNatural = document.querySelector('staff.' + staff + ' .n' + note);
+    lineElSharp   = document.querySelector('staff.' + staff + ' .s' + note);
+    lineElFlat    = document.querySelector('staff.' + staff + ' .f' + note);
+    if (lineElNatural!==null) return lineElNatural;
+    if (lineElSharp!==null) return lineElSharp;
+    if (lineElFlat!==null) return lineElFlat;
+    return null;
 }

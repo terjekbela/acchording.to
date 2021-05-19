@@ -1,24 +1,30 @@
 note {
-    display:block;
-    position:absolute;
+    display: block;
+    position: absolute;
     top: -0.38rem;
     left: 26rem;
-    z-index:1;
-    font-size:12rem;
-    line-height:3rem;
+    z-index: 1;
+    font-size: 12rem;
+    line-height: 3rem;
 }
 note.down {
     top: -4.5rem;
-    left:24rem;
+    left: 24rem;
 }
-
-note::before,
-note.crotchet::before,
-note.quaver::before {
+note::after,
+note.crotchet::after,
+note.quaver::after {
     content: "\00E0A4";
 }
-note.minim::before {
+note.minim::after {
     content: "\00E0A3";
+}
+note.sharp::before,
+note.crotchet.sharp::before,
+note.quaver.sharp::before,
+note.minim.sharp::before {
+    content: "\00E262";
+    margin: 0 1rem 0 -3.9rem;
 }
 
 note.stem::before,
