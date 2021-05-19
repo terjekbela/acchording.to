@@ -2,13 +2,8 @@ let notes = new Set;
 
 navigator.requestMIDIAccess().then(
     (midi) => {
-        for (let input of midi.inputs.values()) {
-            input.onmidimessage = midiMessage;
-            //console.log(input);
-        };
-        for (let output of midi.outputs.values()) {
-            //console.log(output);
-        }
+        [...midi.inputs.values()].forEach((i)=>i.onmidimessage = midiMessage);
+        [...midi.outputs.values()].forEach((o)=>console.log(o));
     },
     () => console.log('No MIDI devices.')
 );
@@ -19,20 +14,22 @@ function midiMessage(message) {
     var velocity = (message.data.length > 2) ? message.data[2] : 0;
     switch (command) {
         case 144:
-            if (velocity > 0) notes.add(note);
-            else notes.delete(note);
+            velocity > 0 ? notes.add(note) : notes.delete(note);
             break;
         case 128:
             notes.delete(note);
             break;
     }
-    midiPlace();
+    notePlace();
 }
 
-function midiPlace() {
-    document.querySelectorAll('note').forEach((e) => e.remove());
+function notePlace() {
     let notesArr = [...notes].sort();
-    console.log(notesArr);
+    //console.log(notesArr);
+    document.querySelectorAll('note').forEach((e) => {  // ugly
+        e.parentElement.classList.remove('show');
+        e.remove();
+    });
     notesArr.forEach((n,i) => {
         if(i > 0 || notesArr.length<4) {
             midiPlaceNote(n, 'top');
@@ -44,18 +41,22 @@ function midiPlace() {
 
 function midiPlaceNote(note, staff) {
     let noteEl = document.createElement("note");
-    if (midiMatchNote(note, 'top') && midiMatchNote(note, 'bottom')) {
-        let linesEl = document.querySelector('staff.' + staff + ' #n' + note);
-        linesEl.appendChild(noteEl);
-    } else if (midiMatchNote(note, 'top')) {
-        let linesEl = document.querySelector('staff.top' + ' #n' + note);
-        linesEl.appendChild(noteEl);
-    } else if (midiMatchNote(note, 'bottom')) {
-        let linesEl = document.querySelector('staff.bottom' + ' #n' + note);
-        linesEl.appendChild(noteEl);
+    let lineEl = null; // a line or a space really
+    if (noteMatchStaff(note, 'top') && noteMatchStaff(note, 'bottom')) {
+        lineEl = document.querySelector('staff.' + staff + ' .n' + note);
+    } else if (noteMatchStaff(note, 'top')) {
+        lineEl = document.querySelector('staff.top .n' + note);
+    } else if (noteMatchStaff(note, 'bottom')) {
+        lineEl = document.querySelector('staff.bottom .n' + note);
+    }
+    if (lineEl!==null) {
+        lineEl.appendChild(noteEl);
+        if (lineEl.classList.contains('ledger')) {
+            lineEl.classList.add('show');
+        }
     }
 }
 
-function midiMatchNote(note, staff) {
-    return document.querySelectorAll('staff.' + staff + ' #n' + note).length > 0;
+function noteMatchStaff(note, staff) {
+    return document.querySelectorAll('staff.' + staff + ' .n' + note).length > 0;
 }
