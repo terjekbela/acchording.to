@@ -26,11 +26,14 @@ header {
 header logo {
     margin-left: 2rem;
 }
-header midi {
+header midiport {
     margin-right: 2rem;
     float:right;
     padding: 1rem 0;
 }
-header midi select {
+header midiport select {
     height:3rem;
+}
+header midiport option {
+    line-height:3rem;
 }
