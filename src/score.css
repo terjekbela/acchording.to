@@ -1,7 +1,8 @@
 system {
     display:block;
+    position:relative;
     width:50rem;
-    margin:50 auto 0 auto;
+    margin:0 auto;
     font-family: Leland;
 }
 staff {
@@ -37,7 +38,7 @@ line, space {
     margin:0;
     padding:0;
 }
-line::before {
+line::after {
     content:'';
     display:block;
     width:100%;
@@ -45,11 +46,11 @@ line::before {
     margin-top:0.9rem;
     background-color:black;
 }
-line.ledger::before {
+line.ledger::after {
     margin-left:25rem;
     width:6rem;
     background-color:white;
 }
-line.ledger.show::before {
+line.ledger.show::after {
     background-color:black;
 }
