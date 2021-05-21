@@ -26,6 +26,13 @@ note.minim.sharp::before {
     content: "\00E262";
     margin: 0 1rem 0 -3.9rem;
 }
+note.flat::before,
+note.crotchet.flat::before,
+note.quaver.flat::before,
+note.minim.flat::before {
+    content: "\00E260";
+    margin: 0 1rem 0 -3.55rem;
+}
 
 note.stem::before,
 note.stem.up::before,
