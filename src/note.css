@@ -2,14 +2,14 @@ note {
     display: block;
     position: absolute;
     top: -0.38rem;
-    left: 26rem;
+    left: 32rem;
     z-index: 1;
     font-size: 12rem;
     line-height: 3rem;
 }
 note.down {
     top: -4.5rem;
-    left: 24rem;
+    left: 30rem;
 }
 note::after,
 note.crotchet::after,
