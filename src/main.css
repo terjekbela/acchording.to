@@ -31,14 +31,22 @@ header {
 header logo {
     margin-left: 2rem;
 }
-header midiport {
+header midiport,
+header key {
     margin-right: 2rem;
     float:right;
     padding: 1rem 0;
 }
-header midiport select {
+header key {
+    display: none;
+}
+header midiport select,
+header key select {
+    width:6rem;
     height:3rem;
 }
-header midiport option {
-    line-height:3rem;
+header midiport option,
+header key option {
+
+    padding-right: 1em;
 }
