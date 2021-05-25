@@ -1,10 +1,11 @@
+// places the notes array onto the grand staff
 function notePlace() {
     let notesArr = [...notes].sort();
-    document.querySelectorAll('note').forEach((e) => {  // ugly
+    document.querySelectorAll('note').forEach((e) => {
         e.parentElement.classList.remove('show');
         e.remove();
     });
-    document.querySelectorAll('line.ledger').forEach((e) => {  // ugly
+    document.querySelectorAll('line.ledger').forEach((e) => {
         e.classList.remove('show');
     });
     console.log(notes);
@@ -37,6 +38,7 @@ function notePlace() {
     });
 }
 
+// returns true if the note in te argument fits on the staff's range
 function noteMatchStaff(note, staff) {
     if(document.querySelectorAll('staff.' + staff + ' .n' + note).length) {
         return true;
@@ -47,12 +49,13 @@ function noteMatchStaff(note, staff) {
     } else return false;
 }
 
+// returns the matching line element the given staff/note matches
 function noteMatchLine(note, staff) {
     lineElNatural = document.querySelector('staff.' + staff + ' .n' + note);
     lineElSharp   = document.querySelector('staff.' + staff + ' .s' + note);
     lineElFlat    = document.querySelector('staff.' + staff + ' .f' + note);
     if (lineElNatural!==null) return lineElNatural;
-    if (lineElFlat!==null) return lineElFlat;
     if (lineElSharp!==null) return lineElSharp;
+    if (lineElFlat!==null) return lineElFlat; 
     return null;
 }
