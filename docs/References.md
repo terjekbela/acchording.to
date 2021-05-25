@@ -6,7 +6,7 @@ SMuFL is a font specification that provides a way of mapping musical symbols req
 
 ## LEland font
 ### https://github.com/MuseScoreFonts/Leland
-The fonts have been initially developed for MuseScore (https://www.musescore.org) music composition software. Leland is compliant with Standard Music Font Layout (SMuFL), which provides a standard way of mapping the thousands of musical symbols required by conventional music notation into the Private Use Area in Unicode's Basic Multilingual Plane for a single (format-independent) font. The font is named after Leland Smith, creator of the SCORE music notation software.
+This font has been initially developed for MuseScore (https://www.musescore.org) music composition software. Leland is compliant with Standard Music Font Layout (SMuFL), which provides a standard way of mapping the thousands of musical symbols required by conventional music notation into the Private Use Area in Unicode's Basic Multilingual Plane for a single (format-independent) font. The font is named after Leland Smith, creator of the SCORE music notation software.
 
 ## WEB MIDI API
 ### https://webaudio.github.io/web-midi-api/

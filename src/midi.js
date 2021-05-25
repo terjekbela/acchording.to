@@ -1,13 +1,15 @@
 let notes = new Set;
 
 // runs one on page load and connects all midi inputs
-navigator.requestMIDIAccess().then(
-    (midi) => {
-        [...midi.inputs.values()].forEach((i)=>midiConnectInput(i));
-        midi.onstatechange = midiOnStateChange
-    },
-    (err) => console.log('No MIDI devices.')
-);
+window.addEventListener('DOMContentLoaded', function(){
+    navigator.requestMIDIAccess().then(
+        (midi) => {
+            [...midi.inputs.values()].forEach((i)=>midiConnectInput(i));
+            midi.onstatechange = midiOnStateChange
+        },
+        (err) => console.log('No MIDI devices.')
+    )
+});
 
 // receives midi messages, stores the in the notes Set and invokes note display
 function midiInMessage(message) {
@@ -42,5 +44,5 @@ function midiConnectInput(input) {
     const selectEl = document.querySelector('midiport select');
     const optionEl = document.createElement("option");
     optionEl.appendChild(document.createTextNode(input.name));
-    selectEl.appendChild(optionEl);
+    if(selectEl !== null) selectEl.appendChild(optionEl);
 }
