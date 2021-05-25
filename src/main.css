@@ -45,8 +45,3 @@ header key select {
     width:6rem;
     height:3rem;
 }
-header midiport option,
-header key option {
-
-    padding-right: 1em;
-}
