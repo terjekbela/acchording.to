@@ -21,8 +21,10 @@ function notePlace() {
         }
         if (lineEl!==null) {
             let noteEl = document.createElement("note");
+            noteEl.classList.add('stem');
+            noteEl.classList.add('up');
             lineEl.appendChild(noteEl);
-            if (lineEl.classList.contains('ledger')) lineEl.classList.add('show');
+            if (lineEl.classList.contains('ledger'))   lineEl.classList.add('show');
             if (lineEl.classList.contains('s' + note)) noteEl.classList.add('sharp');
             if (lineEl.classList.contains('f' + note)) noteEl.classList.add('flat');
             ledgerLines = Array.from(lineEl.classList).filter((c)=>{
@@ -56,6 +58,6 @@ function noteMatchLine(note, staff) {
     lineElFlat    = document.querySelector('staff.' + staff + ' .f' + note);
     if (lineElNatural!==null) return lineElNatural;
     if (lineElSharp!==null) return lineElSharp;
-    if (lineElFlat!==null) return lineElFlat; 
+    if (lineElFlat!==null) return lineElFlat;
     return null;
 }

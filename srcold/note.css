@@ -1,0 +1,35 @@
+note {
+    display: block;
+    position: absolute;
+    top:-0.32rem;
+    left: 32rem;
+    z-index: 1;
+    font-size: 12rem;
+    line-height: 3rem;
+}
+note.down {
+    top: -4.5rem;
+    left: 30rem;
+}
+note::after {
+    content: "\00E0A4";
+}
+note.minim::after {
+    content: "\00E0A3";
+}
+note.sharp::before {
+    content: "\00E262";
+    margin: 0 1rem 0 -3.9rem;
+}
+note.flat::before {
+    content: "\00E260";
+    margin: 0 1rem 0 -3.55rem;
+}
+
+note.stem::after,
+note.stem.up::after {
+    content: "\00E1D5";
+}
+note.stem.down::after {
+    content: "\00E1D6";
+}

@@ -18,7 +18,7 @@ score {
     place-items: center;
     height:calc(100% - 5rem);
 }
-header {
+nav {
     width: 100%;
     height: 5rem;
     font-family: Verdana, Geneva, sans-serif;
@@ -28,20 +28,20 @@ header {
     background-color: black;
 
 }
-header logo {
+nav logo {
     margin-left: 2rem;
 }
-header midiport,
-header key {
+nav midiport,
+nav key {
     margin-right: 2rem;
     float:right;
     padding: 1rem 0;
 }
-header key {
+nav key {
     display: none;
 }
-header midiport select,
-header key select {
+nav midiport select,
+nav key select {
     width:6rem;
     height:3rem;
 }
