@@ -1,0 +1,25 @@
+line {
+    display:flex;
+    align-content:center;
+    position:relative;
+    width:100%;
+    height:1.723rem;
+    margin:0;
+    padding:0;
+}
+line::after {
+    content:'';
+    display:block;
+    width:100%;
+    height:0.40rem;
+    margin-top:0.9rem;
+    background-color:black;
+}
+line.ledger::after {
+    margin-left:31rem;
+    width:6rem;
+    background-color:white;
+}
+line.ledger.show::after {
+    background-color:black;
+}

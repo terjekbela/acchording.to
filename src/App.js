@@ -1,12 +1,22 @@
+import React, { /*useState*/ } from 'react'
+
 import './App.css';
+import Nav   from './Nav'
+import Score from './Score'
+import Keys  from './Keys'
 
 function App() {
-  return (
-    <div className="App">
-      <h1>SATB.ninja</h1>
-      <h2>hello from satb.ninja</h2>
-    </div>
-  );
+
+    //const [notes, setNotes]   = useState(['d', 'f#', 'a']);
+    //const [keySig, setkeySig] = useState(['f#', 'c#']);
+
+    return (
+        <div className="App">
+            <Nav />
+            <Score />
+            <Keys />
+        </div>
+    );
 }
 
-export default App;
+export default App

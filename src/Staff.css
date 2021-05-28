@@ -1,0 +1,43 @@
+staff {
+    display: block;
+    position:relative;
+}
+
+
+
+
+keysign.sharp::before {
+    display: block;
+    position:absolute;
+    content: "\00E262";
+    z-index:1;
+    font-size:14rem;
+    line-height:14rem;
+}
+keysign.sharp.notef::before {
+    left:15rem;
+}
+keysign.sharp.notec::before {
+    left:18.5rem;
+}
+keysign.sharp.noteg::before {
+    left:22rem;
+}
+staff.top keysign.sharp.notef::before {
+    top:1rem;
+}
+staff.top keysign.sharp.notec::before {
+    top:6.2rem;
+}
+staff.top keysign.sharp.noteg::before {
+    top:-0.8rem;
+}
+staff.bottom keysign.sharp.notef::before {
+    top:8rem;
+}
+staff.bottom keysign.sharp.notec::before {
+    top:13.2rem;
+}
+staff.bottom keysign.sharp.noteg::before {
+    top:6.2rem;
+}

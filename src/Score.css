@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'Leland';
+    src: url('./fonts/Leland.woff2') format('woff2'),
+         url('./fonts/Leland.woff')  format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+score {
+    display: grid;
+    place-items: center;
+    height:calc(100% - 20rem);
+}
