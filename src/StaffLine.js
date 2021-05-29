@@ -3,7 +3,7 @@ import './StaffLine.css';
 
 function StaffLine(props) {
     return (
-        <line className={props.type}></line>
+        <div className={'line ' + props.type}></div>
     )
 }
 

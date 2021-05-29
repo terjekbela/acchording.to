@@ -1,11 +1,14 @@
 import React from 'react'
 import './Keys.css';
 
-function Keys() {
+function Keys(props) {
+    // eslint-disable-next-line
+    const { notes, ...restProps } = props;
+
     return (
-        <keys>
-            key key keys
-        </keys>
+        <div className="keys">
+            { notes }
+        </div>
     )
 }
 

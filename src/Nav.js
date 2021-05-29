@@ -4,7 +4,7 @@ import './Nav.css'
 function Nav() {
     return (
         <nav>
-            SATB.ninja
+            <div className="logo">SATB.ninja</div>
         </nav>
     )
 }

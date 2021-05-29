@@ -1,4 +1,4 @@
-line {
+.line {
     display:flex;
     align-content:center;
     position:relative;
@@ -7,7 +7,7 @@ line {
     margin:0;
     padding:0;
 }
-line::after {
+.line::after {
     content:'';
     display:block;
     width:100%;
@@ -15,11 +15,11 @@ line::after {
     margin-top:0.9rem;
     background-color:black;
 }
-line.ledger::after {
+.line.ledger::after {
     margin-left:31rem;
     width:6rem;
     background-color:white;
 }
-line.ledger.show::after {
+.line.ledger.show::after {
     background-color:black;
 }

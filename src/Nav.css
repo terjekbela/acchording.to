@@ -9,20 +9,15 @@ nav {
     background-color: black;
 
 }
-nav logo {
+nav .logo {
     margin-left: 2rem;
 }
-nav midiport,
-nav key {
+nav .midiport {
     margin-right: 2rem;
     float:right;
     padding: 1rem 0;
 }
-nav key {
-    display: none;
-}
-nav midiport select,
-nav key select {
+nav .midiport select {
     width:6rem;
     height:3rem;
 }

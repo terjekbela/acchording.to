@@ -3,7 +3,7 @@ import './StaffSpace.css';
 
 function StaffSpace(props) {
     return (
-        <space className={props.type}></space>
+        <div className={'space ' + props.type}></div>
     )
 }
 

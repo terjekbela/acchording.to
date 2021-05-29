@@ -4,9 +4,9 @@ import System from './System'
 
 function Score() {
     return (
-        <score>
+        <div className="score">
             <System />
-        </score>
+        </div>
     );
 }
 

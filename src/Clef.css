@@ -1,4 +1,4 @@
-clef:before {
+.clef:before {
     display: block;
     position:absolute;
     z-index:1;
@@ -6,11 +6,11 @@ clef:before {
     line-height:14rem;
     left:3.3rem;
 }
-clef.treble:before {
+.clef.treble:before {
     content: "\00e050";
     top:11.342rem;
 }
-clef.bass:before {
+.clef.bass:before {
     content: "\00e062";
     top:7.9rem;
 }
