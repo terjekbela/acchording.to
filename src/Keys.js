@@ -1,15 +1,13 @@
 import React from 'react'
 import './Keys.css';
 
-function Keys(props) {
+export default function Keys(props) {
     // eslint-disable-next-line
     const { notes, ...restProps } = props;
 
     return (
-        <div className="keys">
-            { notes }
+        <div key="123" className="keys">
+            MIDI keys: { notes }
         </div>
     )
 }
-
-export default Keys

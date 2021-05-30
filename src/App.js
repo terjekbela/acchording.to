@@ -5,13 +5,12 @@ import Nav   from './Nav'
 import Score from './Score'
 import Keys  from './Keys'
 
-function App() {
+export default function App() {
     const [notes, setNotes] = useState(new Set());
-    //const [keySig, setkeySig] = useState(['f#', 'c#']);
     
     // runs on page load and connects all midi inputs
-    window.addEventListener('DOMContentLoaded', function(){
-        navigator.requestMIDIAccess().then(
+    window.addEventListener('DOMContentLoaded', () => {
+        navigator.requestMIDIAccess({sysexEnabled:false}).then(
             (midi) => {
                 [...midi.inputs.values()].forEach((i) => midiConnectInput(i))
                 midi.onstatechange = midiOnStateChange
@@ -28,14 +27,36 @@ function App() {
         switch (command) {
             case 144:
                 if(velocity > 0) {
-                    setNotes((notes)=>{notes.add(note); console.log(notes)})
+                    setNotes((notesState) => {
+                        if(!notesState.has(note)) {
+                            return new Set(notesState).add(note)
+                        } else {
+                            return notesState
+                        }
+                    })
                 } else {
-                    setNotes((notes)=>{notes.delete(note); console.log(notes)})
+                    setNotes((notesState) => {
+                        if(notesState.has(note)) {
+                            let n = new Set(notesState)
+                            n.delete(note)
+                            return n
+                        } else {
+                            return notesState
+                        }
+                    })
                 }
                 break;
             case 128:
-                setNotes((notes)=>{notes.delete(note); console.log(notes)})
-                break;
+                setNotes((notesState) => {
+                    if(notesState.has(note)) {
+                        let n = new Set(notesState)
+                        n.delete(note)
+                        return n
+                    } else {
+                        return notesState
+                    }
+                })
+            break;
             default:
         }
     }
@@ -47,11 +68,6 @@ function App() {
 
 // cycles through all inputs on midi state change (user plugges midi keyboard in)
     const midiOnStateChange = (event) => {
-//    const selectEl = document.querySelector('midiport select');
-//    while (selectEl.firstChild) selectEl.removeChild(selectEl.lastChild);
-//    const optionEl = document.createElement("option");
-//    optionEl.appendChild(document.createTextNode('MIDI'));
-//    selectEl.appendChild(optionEl);
         [...event.target.inputs.values()].forEach((i)=>midiConnectInput(i))
     }
 
@@ -63,9 +79,3 @@ function App() {
         </div>
     );
 }
-
-
-
-
-
-export default App
