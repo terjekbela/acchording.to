@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 
 import './App.css';
-import Nav   from './Nav'
-import Score from './Score'
-import Keys  from './Keys'
+import Nav   from './components/Nav'
+import Score from './components/Score'
+import Keys  from './components/Keys'
 
 export default function App() {
     const [notes, setNotes] = useState(new Set());
