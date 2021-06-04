@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import './App.css';
 import Nav   from './components/Nav'
@@ -8,25 +8,17 @@ export default function App() {
     const [notes, setNotes] = useState({midi: new Set()});
 
     // runs on page load and connects all midi inputs
-    window.addEventListener('DOMContentLoaded', () => {
+    useEffect(() => {
         navigator.requestMIDIAccess({sysexEnabled:false}).then(
             (midi) => {
-                [...midi.inputs.values()].forEach((i) => midiConnectInput(i))
-                midi.onstatechange = midiOnStateChange
+                [...midi.inputs.values()].forEach((i) => i.onmidimessage = midiInMessage)
+                midi.onstatechange = (event) => {
+                    [...event.target.inputs.values()].forEach((i) => i.onmidimessage = midiInMessage)
+                }
             },
             (err) => console.log('No MIDI devices: ', err.message)
         )
-    });
-
-    // connects to the midi input received
-    const midiConnectInput = (input) => {
-        input.onmidimessage = midiInMessage;
-    }
-
-    // cycles through all inputs on midi state change (user plugges midi keyboard in)
-    const midiOnStateChange = (event) => {
-        [...event.target.inputs.values()].forEach((i)=>midiConnectInput(i))
-    }
+    }, [])
 
     // receives midi messages, stores them in the notes.midi Set
     const midiInMessage = (message) => {
