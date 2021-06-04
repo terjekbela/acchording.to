@@ -4,8 +4,8 @@ import Staff from './Staff'
 
 function System(props) {
     // eslint-disable-next-line
-    const { clef, keySign, ...restProps } = props;
-    switch(props.type) {
+    const { type, clef, keySign, ...restProps } = props;
+    switch(type) {
         case 'single':
             return (
                 <div className="system single">
@@ -36,10 +36,5 @@ System.defaultProps = {
     type: 'grand',
     clef: ['treble','bass']
 };
-
-//System.propTypes = {
-//    type: PropTypes.string,
-//    clef: PropTypes.array
-//};
 
 export default System

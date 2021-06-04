@@ -9,5 +9,5 @@
 .score {
     display: grid;
     place-items: center;
-    height:calc(100% - 20rem);
+    height:calc(100%);
 }

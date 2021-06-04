@@ -1,11 +1,15 @@
 import React from 'react'
 import './Score.css';
 import System from './System'
+import Keys from './Keys'
 
-function Score() {
+function Score(props) {
+    // eslint-disable-next-line
+    const { notes, ...restProps } = props;
     return (
         <div className="score">
-            <System />
+            <System type='grand' clef={['g','g','c','f']}/>
+            <Keys notes={notes} />
         </div>
     );
 }
