@@ -1,13 +1,13 @@
 import React from 'react'
 import './Keys.css';
+import { useNotes } from '../context/NotesContext'
 
-export default function Keys(props) {
-    // eslint-disable-next-line
-    const { notes, ...restProps } = props;
+export default function Keys() {
+    const notes = useNotes();
     const keys = [...notes.midi].sort((a, b) => a - b).join(', ')
 
     return (
-        <div key="123" className="keys">
+        <div className="keys">
             {keys}
         </div>
     )
