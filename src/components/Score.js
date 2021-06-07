@@ -4,7 +4,6 @@ import System from './System'
 import Keys from './Keys'
 
 function Score(props) {
-    // eslint-disable-next-line
     const { notes, ...restProps } = props;
     return (
         <div className="score">

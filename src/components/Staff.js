@@ -1,12 +1,10 @@
 import React from 'react'
-
 import './Staff.css';
 import Clef       from './Clef'
 import StaffLine  from './StaffLine'
 import StaffSpace from './StaffSpace'
 
 function Staff(props) {
-    // eslint-disable-next-line
     const {clef, ...restProps} = props
     const items = []
     let key=1

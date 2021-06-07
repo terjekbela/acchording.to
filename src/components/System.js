@@ -3,7 +3,6 @@ import './System.css';
 import Staff from './Staff'
 
 function System(props) {
-    // eslint-disable-next-line
     const { type, clef, keySign, ...restProps } = props;
     switch(type) {
         case 'single':
